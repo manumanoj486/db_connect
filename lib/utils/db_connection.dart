@@ -22,8 +22,6 @@ class DbConnection with ChangeNotifier {
 
   Future<void> executeQuery () async {
     await dbConnection();
-    results = await connection.mappedResultsQuery(
-        "SELECT * FROM tetsing");
     results1 = await connection.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'");
     notifyListeners();
     print(results1);
@@ -34,7 +32,7 @@ class DbConnection with ChangeNotifier {
     await dbConnection();
     results = await connection.mappedResultsQuery(query);
     //results = await connection.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'");
-    print(results1);
+    print(results);
 
 
   }

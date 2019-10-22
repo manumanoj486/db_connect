@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/manoj/Documents/db_connection_poc/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/home/manoj/Projects/Flutter/db_connect/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/home/manoj/Documents/db_connection_poc/android/app/src/main/res/values/styles.xml",
+                    "source": "/home/manoj/Projects/Flutter/db_connect/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

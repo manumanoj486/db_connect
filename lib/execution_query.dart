@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:db_connection_poc/utils/db_connection.dart';
+import 'package:provider/provider.dart';
 import 'result.dart';
 
 class QueryExecution extends StatelessWidget {
   String field;
+
+  QueryExecution(this.change_tab);
+  final Function change_tab;
   TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final connection  = Provider.of<DbConnection>(context);
     return Scaffold(
       body:Container(
         child: TextField(
@@ -23,10 +29,8 @@ class QueryExecution extends StatelessWidget {
       ),
      floatingActionButton:FloatingActionButton(
        onPressed: () {
-         print(controller.text);
-         Navigator.push(
-             context,
-             MaterialPageRoute(builder: (context) => Result()));
+         connection.executeWithQuery(controller.text);
+         change_tab(2);
        },
        child: Icon(Icons.send),
        backgroundColor: Colors.green,
