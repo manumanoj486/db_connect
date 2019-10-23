@@ -28,7 +28,6 @@ class QueryExecution extends StatelessWidget {
           onChanged: (text) {
             field = text;
           },
-
         ),
       ),
      floatingActionButton:FloatingActionButton(

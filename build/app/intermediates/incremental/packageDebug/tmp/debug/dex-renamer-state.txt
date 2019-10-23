@@ -1,4 +1,4 @@
-#Wed Oct 23 14:31:41 IST 2019
+#Wed Oct 23 16:22:53 IST 2019
 base.0=/home/manoj/Projects/Flutter/db_connect/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
