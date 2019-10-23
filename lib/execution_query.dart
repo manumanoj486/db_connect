@@ -13,12 +13,16 @@ class QueryExecution extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final connection  = Provider.of<DbConnection>(context);
+    if(connection.currenyQuery!=""){
+      controller.text = connection.currenyQuery;
+    }
+
     return Scaffold(
       body:Container(
         child: TextField(
           controller: controller,
           style: TextStyle(fontSize: 20.0),
-          decoration: InputDecoration.collapsed(hintText: 'Enter query to run'),
+          decoration: InputDecoration.collapsed(hintText: 'Enter the query here'),
           autofocus: true,
           maxLines: null,
           onChanged: (text) {
@@ -29,6 +33,9 @@ class QueryExecution extends StatelessWidget {
       ),
      floatingActionButton:FloatingActionButton(
        onPressed: () {
+         connection.results = null;
+         CircularProgressIndicator();
+         connection.currenyQuery = controller.text;
          connection.executeWithQuery(controller.text);
          change_tab(2);
        },

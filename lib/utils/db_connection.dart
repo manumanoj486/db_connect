@@ -5,6 +5,7 @@ class DbConnection with ChangeNotifier {
   String name;
   String host;
   String defaultDB;
+  String currenyQuery;
   String username;
   String password;
   int port;
@@ -13,7 +14,7 @@ class DbConnection with ChangeNotifier {
   List<Map<String, Map<String, dynamic>>> results;
 
 
-  DbConnection({this.name, this.host, this.defaultDB, this.username, this.password, this.port});
+  DbConnection({this.name, this.host, this.defaultDB, this.username, this.password, this.port, this.currenyQuery});
 
   Future<void> dbConnection() async {
     connection = new PostgreSQLConnection(host, port, defaultDB, username: username, password: password);
@@ -31,6 +32,7 @@ class DbConnection with ChangeNotifier {
   Future<void> executeWithQuery (String query) async {
     await dbConnection();
     results = await connection.mappedResultsQuery(query);
+    notifyListeners();
     //results = await connection.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'");
     print(results);
 

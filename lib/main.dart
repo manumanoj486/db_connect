@@ -24,7 +24,9 @@ class _MyAppState extends State<MyApp> {
           port: 5432,
           defaultDB: 'uhgtvsox',
           username: 'uhgtvsox',
-          password: 'TsylJ19OG7n2Axjuq2fFwv89KEMfd8G5'),
+          password: 'TsylJ19OG7n2Axjuq2fFwv89KEMfd8G5',
+          currenyQuery: ''
+           ),
         child: MyMaterialApp());
 
   }
