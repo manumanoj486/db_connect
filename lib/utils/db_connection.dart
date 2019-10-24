@@ -11,7 +11,7 @@ class DbConnection with ChangeNotifier {
   int port;
   var connection;
   List<List<dynamic>> results1;
-  List<Map<String, Map<String, dynamic>>> results;
+  List<List<dynamic>> results;
 
 
   DbConnection({this.name, this.host, this.defaultDB, this.username, this.password, this.port, this.currenyQuery});
@@ -31,7 +31,7 @@ class DbConnection with ChangeNotifier {
 
   Future<void> executeWithQuery (String query) async {
     await dbConnection();
-    results = await connection.mappedResultsQuery(query);
+    results = await connection.query(query);
     notifyListeners();
     //results = await connection.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'");
     print(results);

@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'home_page.dart';
 import 'execution_query.dart';
 import 'result.dart';
+import 'datatable.dart';
 import 'package:db_connection_poc/utils/db_connection.dart';
 import 'package:provider/provider.dart';
 
@@ -19,12 +20,12 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return  ChangeNotifierProvider<DbConnection>(
         builder: (_) => DbConnection(
-          name: 'testconnection',
-          host: 'john.db.elephantsql.com',
+          name: 'dbb',
+          host: '192.168.68.127',
           port: 5432,
-          defaultDB: 'uhgtvsox',
-          username: 'uhgtvsox',
-          password: 'TsylJ19OG7n2Axjuq2fFwv89KEMfd8G5',
+          defaultDB: 'reckon_dev',
+          username: 'postgres',
+          password: 'francium',
           currenyQuery: ''
            ),
         child: MyMaterialApp());
@@ -59,7 +60,7 @@ class _MyMaterialAppState extends State<MyMaterialApp> {
     final List<Widget> _children = [
       MyHomePage(dbConnection: connection),
       QueryExecution(onTabTapped),
-      Result()
+      connection.results == null ? Center(child: CircularProgressIndicator(),)  :ResultTable(connection.results)
     ];
 
     return MaterialApp(
